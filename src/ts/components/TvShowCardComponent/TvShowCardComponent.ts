@@ -3,7 +3,7 @@ import Component from "../Component/Component.js";
 
 class TvShowCardComponent extends Component {
   constructor(parentElement: Element, private shows: ShowStructure) {
-    super(parentElement, "li", "");
+    super(parentElement, "article", "serie");
   }
 
   render() {
@@ -22,7 +22,6 @@ class TvShowCardComponent extends Component {
     }
 
     this.element.innerHTML = `
-        <article class="serie">
               <img class="serie__poster"
                 src="${this.shows.poster}"
                 alt="The Sopranos poster" />
@@ -32,7 +31,7 @@ class TvShowCardComponent extends Component {
               ${punctuationStars}
               </ul>
               <button><i class="icon icon--delete fas fa-times-circle"></i></button>
-            </article>
+
     `;
   }
 }
