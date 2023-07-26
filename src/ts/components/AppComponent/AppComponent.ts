@@ -22,8 +22,12 @@ class AppComponent extends Component {
 
     const seriesList = document.querySelector(".series")!;
 
-    const sopranosCard = new TvShowCardComponent(seriesList, shows[0]);
-    sopranosCard.render();
+    shows.forEach((tvShow) => {
+      const serielist = document.createElement("li");
+      serielist.setAttribute("score", "score__star");
+      new TvShowCardComponent(serielist, tvShow).render();
+      seriesList.append(serielist);
+    });
   }
 }
 
