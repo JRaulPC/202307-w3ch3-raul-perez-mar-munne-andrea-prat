@@ -12,7 +12,7 @@ class TvShowCardComponent extends Component {
     if (this.shows.isWatched) {
       punctuationStars = `
         <li class="score__star">
-           <button><i class="icon icon--score far fa-star" title="${this.shows.score}/5"></i></button>
+           <button><i class="icon icon--score far fa-star" title="${this.shows.score}"></i></button>
         </li>`;
     } else {
       punctuationStars = `
@@ -24,7 +24,7 @@ class TvShowCardComponent extends Component {
     this.element.innerHTML = `
               <img class="serie__poster"
                 src="${this.shows.poster}"
-                alt="The Sopranos poster" />
+                alt="${this.shows.name}" />
               <h4 class="serie__title">${this.shows.name}</h4>
               <span class="serie__info">${this.shows.creator} ${this.shows.year} </span>
               <ul class="score">
