@@ -8,17 +8,20 @@ class SeriesList extends Component {
   }
 
   render() {
+    const watchedShows = shows.filter((show) => show.isWatched);
+    const pendingShows = shows.filter((show) => !show.isWatched);
+
     this.element.innerHTML = ` 
        <section class="list">
         <h3 class="list__title">Pending series</h3>
-          <span class="list__info">You have 4 series pending to watch</span>
+          <span class="list__info">You have ${pendingShows.length} series pending to watch</span>
           <!--<span class="list__info">Congrats! You've watched all your series</span>-->
         <ul class="series">
          </ul>
       </section>
       <section class="list">
         <h3 class="list__title">Watched series</h3>
-        <span class="list__info">You have watched 4 series</span>
+        <span class="list__info">You have watched ${watchedShows.length} series</span>
         <ul class="series">
          </ul>
       </section>
@@ -28,11 +31,15 @@ class SeriesList extends Component {
       ".list:nth-of-type(1) .series"
     )!;
 
-    const pendingShows = shows.filter((show) => !show.isWatched);
-
     pendingShows.forEach((pendingShow) => {
       const pendingShowPosition = document.createElement("li");
-      new TvShowCardComponent(pendingShowPosition, pendingShow).render();
+      const cardComponent = new TvShowCardComponent(
+        pendingShowPosition,
+        pendingShow
+      );
+
+      cardComponent.render();
+
       pendingShowsList.append(pendingShowPosition);
     });
 
@@ -40,12 +47,16 @@ class SeriesList extends Component {
       ".list:nth-of-type(2) .series"
     )!;
 
-    const watchedShows = shows.filter((show) => show.isWatched);
-
     watchedShows.forEach((tvShow) => {
-      const serielist = document.createElement("li");
-      new TvShowCardComponent(serielist, tvShow).render();
-      watchedShowsList.append(serielist);
+      const watchedShowPosition = document.createElement("li");
+      const cardComponent = new TvShowCardComponent(
+        watchedShowPosition,
+        tvShow
+      );
+
+      cardComponent.render();
+
+      watchedShowsList.append(watchedShowPosition);
     });
   }
 }
