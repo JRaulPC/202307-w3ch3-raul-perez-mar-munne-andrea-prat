@@ -1,6 +1,6 @@
 import Component from "../Component/Component.js";
 
-class StarButtonComponent extends Component {
+class StarButtonsComponent extends Component {
   text: string;
   actionOnClick: () => void;
 
@@ -29,4 +29,4 @@ class StarButtonComponent extends Component {
   }
 }
 
-export default StarButtonComponent;
+export default StarButtonsComponent;
