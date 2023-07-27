@@ -33,13 +33,7 @@ class SeriesList extends Component {
 
     pendingShows.forEach((pendingShow) => {
       const pendingShowPosition = document.createElement("li");
-      const cardComponent = new TvShowCardComponent(
-        pendingShowPosition,
-        pendingShow
-      );
-
-      cardComponent.render();
-
+      new TvShowCardComponent(pendingShowPosition, pendingShow).render();
       pendingShowsList.append(pendingShowPosition);
     });
 
@@ -49,13 +43,7 @@ class SeriesList extends Component {
 
     watchedShows.forEach((tvShow) => {
       const watchedShowPosition = document.createElement("li");
-      const cardComponent = new TvShowCardComponent(
-        watchedShowPosition,
-        tvShow
-      );
-
-      cardComponent.render();
-
+      new TvShowCardComponent(watchedShowPosition, tvShow).render();
       watchedShowsList.append(watchedShowPosition);
     });
   }

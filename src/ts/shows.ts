@@ -1,4 +1,4 @@
-import { Shows } from "./types/types.js";
+import { type Shows } from "./types/types.js";
 
 const shows: Shows = [
   {
