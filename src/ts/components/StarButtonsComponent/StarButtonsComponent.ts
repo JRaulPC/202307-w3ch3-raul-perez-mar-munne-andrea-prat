@@ -24,9 +24,35 @@ class StarButtonsComponent extends Component {
 
   render() {
     this.element.textContent = this.text;
-    this.element.innerHTML = 
-    
-
+    this.element.innerHTML = `
+      <ul class="score">
+        <li class="score__star">
+          <button>
+            <i class="icon icon--score far fa-star" title="1/5"></i>
+          </button>
+        </li>
+        <li class="score__star">
+          <button>
+            <i class="icon icon--score far fa-star" title="2/5"></i>
+          </button>
+        </li>
+        <li class="score__star">
+          <button>
+            <i class="icon icon--score far fa-star" title="3/5"></i>
+          </button>
+        </li>
+        <li class="score__star">
+          <button>
+            <i class="icon icon--score far fa-star" title="4/5"></i>
+          </button>
+        </li>
+        <li class="score__star">
+          <button>
+            <i class="icon icon--score far fa-star" title="5/5"></i>
+          </button>
+        </li>
+      </ul>
+    `;
   }
 
   changeStarButtonsStatus(isUnfilled: boolean) {
@@ -34,7 +60,10 @@ class StarButtonsComponent extends Component {
   }
 
   listenEvents() {
-    const actionOnClick = this.element.addEventListener("click", this.changeStarButtonsStatus(this.isUnfilled));
+    const actionOnClick = this.element.addEventListener(
+      "click",
+      this.changeStarButtonsStatus(this.isUnfilled)
+    );
   }
 }
 
