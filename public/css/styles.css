@@ -81,6 +81,15 @@ img {
   display: none;
 }
 
+.serie .icon--score {
+  cursor: pointer;
+}
+
+.star-active {
+  color: burlywood;
+  background-color: aquamarine;
+}
+
 .serie:hover .icon--delete {
   display: block;
 }
