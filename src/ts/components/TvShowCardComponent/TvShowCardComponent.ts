@@ -2,6 +2,8 @@ import { type ShowStructure } from "../../types/types";
 import Component from "../Component/Component.js";
 
 class TvShowCardComponent extends Component {
+  selectedStarIndex = -1;
+
   constructor(
     parentElement: Element,
     private readonly showData: ShowStructure
@@ -40,6 +42,7 @@ class TvShowCardComponent extends Component {
     `;
 
     this.listenToDeleteButton();
+    this.listenToStarButtons();
   }
 
   private listenToDeleteButton() {
@@ -47,7 +50,30 @@ class TvShowCardComponent extends Component {
     const button = closeIcon.parentElement!;
 
     button.addEventListener("click", () => {
-      this.element.remove();
+      this.element.parentElement!.remove();
+    });
+  }
+
+  private listenToStarButtons() {
+    const starButtons = Array.from(
+      this.element.querySelectorAll("i.icon.icon--score")
+    );
+
+    starButtons.forEach((button, clickedButtonIndex) => {
+      button.addEventListener("click", () => {
+        this.selectedStarIndex = clickedButtonIndex;
+        this.updateStarClasses(starButtons);
+      });
+    });
+  }
+
+  private updateStarClasses(starButtons: Element[]) {
+    starButtons.forEach((button, currentButtonIndex) => {
+      if (currentButtonIndex <= this.selectedStarIndex) {
+        button.classList.add("star-active");
+      } else {
+        button.classList.remove("star-active");
+      }
     });
   }
 }
